@@ -1,20 +1,16 @@
-import {MongoClient} from "mongodb"
-const host = process.env.HOST
-const db = process.env.DATABASE
+import {Db, MongoClient} from "mongodb"
+const host:string  = process.env.HOST === undefined ? '' : process.env.HOST;
+const database = process.env.DATABASE
+const client = new MongoClient(host)
 
-console.log(host)
-async function connectToDB():Promise<MongoClient | null>{
-    let client
-    let conn
-    if( host !== undefined){
-        client = new MongoClient(host)
-        try {
-            return conn = await client.connect()
-        } catch (error) {
-            console.log("can't connect to"+ host)
-        }
+const connectToDB= async()=>{
+    let conn:MongoClient
+    try {
+       conn = await client.connect()
+        let db:Db = await conn.db(database)
+        return db
+    } catch (error) {
+        console.log("can't connect to mongoDB on host " + host )
     }
-    return null
 }
-const conn:Promise<MongoClient|null> = connectToDB()
-export default conn
+export default connectToDB
