@@ -1,6 +1,19 @@
 import { Header } from "../component/Header";
 import searchIcon from "../assets/search-icon.png"
+import { getAllItems } from "../utils/fetchUtil";
+import { useEffect, useState } from "react";
 export function Home(){
+    interface Countries{
+        _id:string
+    }
+    const url:string = import.meta.env.VITE_APP_URL
+    let [countries,setCountries] = useState<Countries[]>([])
+    useEffect(()=>{
+        getAllItems(url+'/api/menues/all-countries').then(
+            (datas:any)=>  {setCountries(datas)
+            console.log(countries)}
+        )
+    },[])
     return(
         <div className=" w-full h-screen bg-gray-100">
             <Header>
@@ -25,7 +38,11 @@ export function Home(){
                     </div>
                 </div>
                 <div className=" bg-white bottom-[-300px] rounded-xl w-[60%] h-[400px] absolute">
-
+                    {countries.map((c,i)=>(
+                        <div key={i.toString()}>
+                            {c._id}
+                        </div>
+                    ))}
                 </div>
             </div>
         </div>

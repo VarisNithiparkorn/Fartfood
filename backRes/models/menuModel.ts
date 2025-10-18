@@ -1,21 +1,41 @@
 import connectToDB from "../config/database";
-import { AggregationCursor, Db } from "mongodb";
+import { AggregationCursor, Db, FindCursor, WithId } from "mongodb";
+import { Document } from "mongodb";
 let db:Db|null = await connectToDB() ?? null
 
-async function getCountryOfAllFood() :Promise<Document[]>{
+function getAllMenues():Promise<WithId<Document>[]>{
     if(db === null){
         throw new Error("can't connect to mongoDB");
     }    
     try{
-        const result:AggregationCursor<Document> = await db.collection("menues").aggregate([{
-            "$group":{
-                "_id":"country"
-            }
-        }]);
-        return  result.toArray()
+        const result:Promise<WithId<Document>[]> = db.collection("menues").find({}).toArray();
+        return  result
     }catch(error){
         throw new Error("can't get menues")
     }
 }
 
-export {getCountryOfAllFood}
+async function getCountryOfAllFood(): Promise<Document[]>{
+    if(db === null){
+        throw new Error("can't connect to mongoDB");
+    }    
+    try{
+        const result:Promise<Document[]> =  db.collection("menues").aggregate([{
+            "$group":{
+                "_id":"$country"
+            }
+        },
+        {
+            "$sort":{
+                "_id":-1
+            }
+        }
+        ]).toArray();
+        console.log(result)
+        return  result
+    }catch(error){
+        throw new Error("can't get menues")
+    }
+}
+
+export {getCountryOfAllFood,getAllMenues}
