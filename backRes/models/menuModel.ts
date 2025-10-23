@@ -31,11 +31,22 @@ async function getCountryOfAllFood(): Promise<Document[]>{
             }
         }
         ]).toArray();
-        console.log(result)
         return  result
     }catch(error){
         throw new Error("can't get menues")
     }
 }
 
-export {getCountryOfAllFood,getAllMenues}
+async function getAllFoodCategory(): Promise<Document[]>{
+    if(db === null){
+        throw new Error("can't connect to mongoDB");
+    }    
+    try{
+        const result:Promise<Document[]> =  db.collection("menues").distinct("category",{});
+        return  result
+    }catch(error){
+        throw new Error("can't get menues")
+    }
+}
+
+export {getCountryOfAllFood,getAllMenues,getAllFoodCategory}
