@@ -1,14 +1,10 @@
 import logo from '../assets/fartfoodLogo.png'
-import text from '../assets/FartFoodText.png'
 export function Header(){
     return(
         <div className=" items-center flex justify-between w-screen h-[72px]">
-            <div className=' p-5 flex items-center h-full'>
+            <div className=' m-1 flex items-center h-full'>
                 <a href=''>
-                    <img className=' w-[80px] h-[80px]' src={logo}></img>
-                </a>
-                <a href=''>
-                    <img className=' w-[120px] h-[120px]' src={text}></img>
+                    <img className=' w-[180px] h-[180px]' src={logo}></img>
                 </a>
             </div>
             <div className=' m-5 p-5 h-full'>

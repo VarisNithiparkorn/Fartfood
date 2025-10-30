@@ -1,0 +1,35 @@
+[
+{
+    "name": "Classic Club Sandwich",
+    "description": "Triple-decker sandwich with roasted turkey, ham, crispy bacon, lettuce, tomato, and mayonnaise on toasted white bread.",
+    "price": 15,
+    "category": "Entrees",
+    "isAvailable": true,
+    "imageURL": "https://example.com/club_sandwich.jpg",
+    "ingredients": ["turkey", "ham", "bacon", "white bread", "mayonnaise", "lettuce"],
+    "dietaryTags": ["high-protein", "classic", "pork"],
+    "country": "USA"
+  },
+  {
+    "name": "Katsu Sando",
+    "description": "A refined Japanese sandwich featuring a thick slice of crispy fried pork cutlet and shredded cabbage, dressed with tonkatsu sauce on soft milk bread.",
+    "price": 14,
+    "category": "Entrees",
+    "isAvailable": true,
+    "imageURL": "https://example.com/katsu_sando.jpg",
+    "ingredients": ["pork cutlet", "panko breading", "milk bread", "tonkatsu sauce", "cabbage"],
+    "dietaryTags": ["pork", "fried", "savory"],
+    "country": "Japan"
+  },
+  {
+    "name": "Spicy Chicken Satay Wrap",
+    "description": "Skewered chicken marinated in turmeric and spices, grilled, and wrapped in a warm flatbread with creamy peanut sauce and fresh cucumber salad.",
+    "price": 13,
+    "category": "Entrees",
+    "isAvailable": true,
+    "imageURL": "https://example.com/satay_wrap.jpg",
+    "ingredients": ["chicken", "flatbread", "peanut sauce", "cucumber", "turmeric"],
+    "dietaryTags": ["chicken", "nutty", "spicy", "handheld"],
+    "country": "Thailand"
+  }
+]
